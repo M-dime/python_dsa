@@ -7,4 +7,44 @@
 # for i in lst:
 #     if str(i**2) == str(i**2)[::-1]:
 #         print(i,i**2)
-print(10**((len('10000'))/2))
+# print(10**((len('10000'))/2))
+class Product(object):
+    deliveryCharge = 50
+    def __init__(self, nam, prc):
+        self.name = nam
+        self.price = prc
+
+    def get_name(self):
+        return self.name
+
+    def get_price(self):
+        return self.price + self.deliveryCharge
+
+    def __str__(self):
+        return 'The {} will cost you Rs.{}'.format(self.get_name(), self.get_price())
+
+class Gift(Product):
+    wrapping_charge = 100
+    def __init__(self,nam,prc):
+        Product.__init__(self,nam,prc)
+    def get_price(self):
+        return self.price + self.deliveryCharge + self.wrapping_charge
+
+if __name__ == '__main__':
+    toy = Gift('barbie',300)
+    print(toy.get_price())
+    print(str(toy))
+# class A(object):
+#      def __init__(self,x=0,y=0):
+#          self.x = x
+#          self.y = y
+#          # print('hi',self.x,self.y)
+#
+# class B(A):
+#     def __init__(self,x,y):
+#         A.__init__(self,x,y)
+#     def dis(self):
+#         return["hello", self.x, self.y]
+#
+# b= B('ji',2)
+# print(b.dis())
